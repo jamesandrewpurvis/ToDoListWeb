@@ -1,5 +1,6 @@
 package com.james;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
@@ -23,6 +24,16 @@ public class App
     	public static void main(String[] args)
     	{
     		mInstance.printList();
+    		System.out.println("TEST");
+    		RestService.openConnection("https://www.days-until-christmas.co.uk");
+    		RestService.setConnectionRequestMethod("GET");
+    		RestService.setConnectionRequestProperty("Accept", "application/json");
+    		try {
+				RestService.readPage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     	}
     	
     	private static void printHeader()
